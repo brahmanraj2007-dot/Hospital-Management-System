@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarePoint | Hospital Management System</title>
+<style>
+:root{--navy:#10243a;--navy2:#173653;--teal:#18a999;--bg:#f3f7fb;--ink:#182b3d;--muted:#718096;--line:#e4ebf2;--white:#fff;--red:#e05d5d;--amber:#e8a23b;--shadow:0 8px 28px rgba(22,48,75,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.5 Inter,Segoe UI,Arial,sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}.sidebar{width:245px;background:linear-gradient(180deg,var(--navy),#0b1b2c);color:#dbe8f2;padding:24px 16px;position:fixed;inset:0 auto 0 0;z-index:5;overflow:auto}.brand{display:flex;align-items:center;gap:11px;padding:0 10px 27px;font-size:19px;font-weight:800;color:#fff}.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--teal);display:grid;place-items:center;font-size:22px}.nav-label{font-size:10px;letter-spacing:1.4px;color:#7f9bb2;padding:12px 12px 8px}.nav button{width:100%;display:flex;align-items:center;gap:12px;background:transparent;color:#c6d5e2;text-align:left;padding:11px 12px;border-radius:10px;margin:2px 0}.nav button:hover,.nav button.active{background:#23445f;color:white}.nav .ico{width:20px;text-align:center;font-size:16px}.sidebar-foot{margin:28px 8px 0;padding:14px;border:1px solid #31506a;border-radius:12px;color:#9eb4c7;font-size:11px}.main{margin-left:245px;width:calc(100% - 245px);padding:24px 30px 40px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:15px}.eyebrow{color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}.topbar h1{font-size:25px;margin:3px 0 0}.top-right{display:flex;align-items:center;gap:12px}.date{color:var(--muted);font-size:12px}.avatar{width:38px;height:38px;border-radius:50%;background:#d9f2ef;color:#087d72;display:grid;place-items:center;font-weight:800}.page{display:none}.page.active{display:block}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)}.stat{display:flex;justify-content:space-between;align-items:flex-start}.stat .label{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:27px;margin-top:7px}.stat-icon{width:40px;height:40px;border-radius:12px;background:#e8f7f5;display:grid;place-items:center;font-size:19px}.stat small{color:#149b83;font-size:11px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:4px 0 13px;gap:12px}.section-head h2{font-size:16px;margin:0}.muted{color:var(--muted)}.dashboard-grid{grid-template-columns:1.5fr 1fr}.chart{height:220px;display:flex;align-items:end;gap:13px;padding:22px 5px 4px}.bar-wrap{flex:1;text-align:center;color:var(--muted);font-size:10px}.bar{background:linear-gradient(180deg,#20b6a4,#178d9b);border-radius:7px 7px 2px 2px;min-height:8px;margin-bottom:7px}.activity{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.activity:last-child{border:0}.dot{width:9px;height:9px;background:var(--teal);border-radius:50%;margin-top:6px;flex-shrink:0}.activity b{font-size:12px}.activity p{margin:2px 0;color:var(--muted);font-size:11px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.search{padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:white;min-width:220px;outline-color:var(--teal)}.btn{padding:10px 14px;border-radius:9px;background:var(--teal);color:white;font-weight:700}.btn:hover{filter:brightness(.95)}.btn.secondary{background:#eaf2f6;color:#31516a}.btn.danger{background:#fff0f0;color:#c34444}.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);font-size:12px}th{font-size:10px;letter-spacing:.7px;color:#8292a2;background:#f9fbfd;text-transform:uppercase}tr:last-child td{border:0}.pill{display:inline-block;border-radius:20px;padding:4px 9px;font-size:10px;font-weight:700;background:#e8f7f1;color:#16866d}.pill.warn{background:#fff5e6;color:#b7791f}.pill.red{background:#fff0f0;color:#c34b4b}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff;outline-color:var(--teal)}.field.full{grid-column:1/-1}.modal{display:none;position:fixed;inset:0;background:#0d2035a8;z-index:20;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:white;border-radius:16px;padding:22px;width:min(560px,100%);max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.modal-head h2{font-size:18px;margin:0}.close{background:#eef3f6;border-radius:8px;padding:6px 10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.empty{text-align:center;padding:35px;color:var(--muted)}.notice{background:#fff8e9;border:1px solid #f4dfb5;color:#805b1d;padding:12px 14px;border-radius:10px;margin-bottom:17px;font-size:12px}.equipment-grid{grid-template-columns:repeat(3,1fr)}.equipment{display:flex;gap:12px;align-items:center}.equipment-icon{width:42px;height:42px;border-radius:12px;background:#edf5fa;display:grid;place-items:center;font-size:20px}.equipment h3{font-size:13px;margin:0}.equipment p{margin:3px 0;color:var(--muted);font-size:11px}.settings-grid{grid-template-columns:1fr 1fr}.footer{text-align:center;color:#9aa8b5;font-size:10px;padding:25px}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:1fr}.equipment-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.sidebar{width:65px;padding:15px 7px}.brand{padding:0 6px 22px}.brand span:last-child,.nav-label,.nav button .navtext,.sidebar-foot{display:none}.nav button{justify-content:center;padding:12px 4px}.nav .ico{font-size:18px}.main{margin-left:65px;width:calc(100% - 65px);padding:18px 13px}.topbar h1{font-size:20px}.date{display:none}.stats{gap:9px}.card{padding:13px}.stat strong{font-size:22px}.equipment-grid,.settings-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+
+/* Authentication and patient portal */
+.auth-screen{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 15% 15%,#1d6170 0,transparent 35%),linear-gradient(135deg,#0b1b2c,#173653 60%,#0c7773)}
+.auth-card{width:min(460px,100%);background:#fff;border-radius:22px;padding:30px;box-shadow:0 24px 70px #06152566}.auth-brand{display:flex;align-items:center;gap:12px;margin-bottom:20px}.auth-brand .brand-mark{width:46px;height:46px}.auth-card h1{font-size:25px;margin:0}.auth-card p{color:#718096;margin:5px 0 20px}.role-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#eef3f6;padding:5px;border-radius:11px;margin:18px 0}.role-switch button{padding:10px;border-radius:8px;background:transparent;color:#526579;font-weight:700}.role-switch button.selected{background:#fff;color:#118f82;box-shadow:0 2px 8px #10243a16}.auth-field{margin:12px 0}.auth-field label{display:block;font-size:12px;color:#526579;margin-bottom:5px}.auth-field input{width:100%;padding:12px;border:1px solid #dce5ec;border-radius:9px}.auth-submit{width:100%;margin-top:10px;padding:12px;border-radius:9px;background:#18a999;color:white;font-weight:800}.demo-credentials{background:#f2f8fa;border:1px solid #dcebed;padding:12px;border-radius:10px;margin-top:16px;font-size:12px;color:#526579}.auth-error{display:none;color:#c34444;background:#fff0f0;border-radius:8px;padding:9px;font-size:12px;margin-top:10px}.patient-portal{display:none;min-height:100vh;background:#f3f7fb}.portal-header{background:#10243a;color:white;padding:18px 5%;display:flex;align-items:center;justify-content:space-between}.portal-content{max-width:1100px;margin:25px auto;padding:0 20px}.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.portal-card{background:#fff;border:1px solid #e4ebf2;border-radius:14px;padding:18px;box-shadow:0 8px 28px #16304b0b}.portal-card h3{font-size:14px;margin:0 0 10px}.portal-card strong{font-size:22px}.portal-wide{grid-column:1/-1}.portal-table{width:100%;min-width:0}.portal-table th,.portal-table td{padding:11px}.portal-note{background:#fff8e9;border:1px solid #f4dfb5;padding:12px;border-radius:10px;color:#805b1d;font-size:12px;margin-bottom:16px}
+@media(max-width:700px){.portal-grid{grid-template-columns:1fr}.portal-wide{grid-column:auto}.auth-card{padding:22px}}
+
+
+.login-screen{min-height:100vh;background:radial-gradient(circle at 15% 15%,#244f69 0,#10243a 42%,#081827 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px;color:#183047}.login-brand{display:flex;align-items:center;gap:12px;color:white;margin-bottom:22px;font-size:20px}.login-brand small{display:block;color:#b4c9d8;font-size:11px;font-weight:400}.login-card{width:min(460px,100%);background:#fff;border-radius:20px;padding:30px;box-shadow:0 24px 80px #06152380}.login-welcome h1{font-size:25px;margin:7px 0}.login-welcome p{color:#718096;margin:0 0 20px}.login-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#f0f5f8;padding:5px;border-radius:11px;margin-bottom:20px}.login-tab{padding:11px;border-radius:8px;background:transparent;color:#627487;font-weight:700}.login-tab.active{background:#fff;color:#138f83;box-shadow:0 2px 9px #18304712}.login-form label,.patient-request label{display:block;font-size:11px;font-weight:700;color:#526579;margin:12px 0 6px}.login-form input,.patient-request input,.patient-request select{width:100%;padding:12px;border:1px solid #dfe8ef;border-radius:9px;outline-color:#18a999;background:#fff}.password-wrap{display:flex;border:1px solid #dfe8ef;border-radius:9px;overflow:hidden}.password-wrap input{border:0;min-width:0}.password-wrap button{padding:0 13px;background:#f3f7fa;color:#476176}.login-submit{width:100%;margin-top:12px;padding:12px}.login-error{color:#c34444;font-size:12px;min-height:17px;margin:7px 0 0}.demo-credentials{display:flex;flex-direction:column;gap:5px;background:#f2f8f8;border:1px solid #d9eeeb;border-radius:10px;padding:12px;margin-top:17px;font-size:11px;color:#45616c}.demo-credentials code{background:#e2efed;padding:2px 5px;border-radius:4px;color:#126f69}.login-note{text-align:center;color:#8797a5;font-size:10px;margin:16px 0 0}.login-bottom{color:#9bb0c1;font-size:10px;margin-top:22px}.patient-portal{min-height:100vh;background:#f3f7fb}.patient-side{width:245px;position:fixed;inset:0 auto 0 0;background:linear-gradient(180deg,#10243a,#0b1b2c);padding:24px 16px;color:#dbe8f2}.patient-side-label{font-size:10px;letter-spacing:1.2px;color:#819bb0;padding:20px 12px 10px}.patient-nav{display:block;width:100%;text-align:left;padding:12px;border-radius:9px;background:transparent;color:#c9d8e4;margin:3px 0}.patient-nav.active,.patient-nav:hover{background:#23445f;color:white}.patient-side-foot{position:absolute;bottom:25px;left:24px;right:24px;border:1px solid #31506a;border-radius:11px;padding:13px;color:#a8bdce;font-size:11px;line-height:1.8}.patient-main{margin-left:245px;padding:26px 30px 40px}.patient-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.patient-top h1{font-size:25px;margin:4px 0}.patient-top p{margin:0;color:#718096}.patient-hero{background:linear-gradient(110deg,#126f75,#18a999);border-radius:16px;padding:25px 28px;color:#fff;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;overflow:hidden}.patient-hero span{font-size:10px;letter-spacing:1.2px;opacity:.8}.patient-hero h2{font-size:23px;margin:8px 0}.patient-hero p{margin:0;color:#dcf7f3}.hero-symbol{font-size:75px;opacity:.25}.patient-stats{margin-bottom:16px}.patient-request{display:grid;grid-template-columns:1fr}.patient-request .btn{margin-top:15px}.tiny{font-size:10px}.guidance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.guidance-grid div{background:#f5f9fb;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:5px}.guidance-grid span{font-size:11px;color:#718096}.patient-info-card{margin-top:16px}.patient-info-card h2,.patient-profile h2,.patient-section h2{font-size:16px}.patient-profile{display:flex;align-items:center;gap:18px;margin-bottom:15px}.profile-avatar{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#d9f2ef;color:#138f83;font-size:27px}.patient-profile p{color:#718096;margin:4px 0 8px}.profile-details{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.profile-details div{padding:12px;background:#f5f9fb;border-radius:9px}.profile-details span{display:block;color:#81909d;font-size:10px}.profile-details b{font-size:12px}.patient-section{display:block}
+@media(max-width:700px){.login-card{padding:22px}.patient-side{width:65px;padding:15px 7px}.patient-side .brand{padding:0 6px 15px}.patient-side .brand span:last-child,.patient-side-label,.patient-nav{font-size:0}.patient-nav{height:42px;padding:8px;text-align:center}.patient-side-foot{display:none}.patient-main{margin-left:65px;padding:18px 13px}.patient-top h1{font-size:19px}.patient-hero{padding:18px}.patient-hero h2{font-size:18px}.hero-symbol{font-size:48px}.guidance-grid,.profile-details{grid-template-columns:1fr}.patient-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.login-screen,.sidebar,.patient-side,.btn{display:none!important}.main,.patient-main{margin:0;width:100%}}
+
+</style>
+</head>
+<body>
+
+<div class="auth-screen" id="authScreen">
+ <div class="auth-card">
+  <div class="auth-brand"><div class="brand-mark">✚</div><div><h1>CarePoint HMS</h1><div style="font-size:11px;color:#718096">Hospital Management System</div></div></div>
+  <h2 style="font-size:19px;margin:0">Secure account access</h2><p>Sign in with your registered email address.</p>
+  <div class="role-switch"><button id="adminTab" class="selected" type="button" onclick="setLoginRole('admin')">Admin Login</button><button id="patientTab" type="button" onclick="setLoginRole('patient')">Patient Login</button></div>
+  <form id="loginForm">
+   <div class="auth-field"><label>Email address</label><input id="loginUser" type="email" autocomplete="username" required placeholder="name@example.com"></div>
+   <div class="auth-field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters"></div>
+   <button class="auth-submit" id="loginButton" type="submit">Sign in</button>
+   <button class="btn secondary" id="signupButton" type="button" style="width:100%;margin-top:9px;display:none">Create patient account</button>
+   <button type="button" id="resetButton" style="display:block;margin:12px auto 0;background:transparent;color:#138f83">Forgot password?</button>
+   <div class="auth-error" id="loginError" role="alert"></div>
+   <div id="authStatus" style="font-size:12px;color:#16866d;margin-top:10px" aria-live="polite"></div>
+  </form>
+  <div style="font-size:10px;color:#9aa8b5;margin-top:13px">                                               Committed to care, powered by trust. 🔒 100% Confidential.</div>
+ </div>
+</div>
+<div class="patient-portal" id="patientPortal">
+ <header class="portal-header"><div style="display:flex;align-items:center;gap:10px"><div class="brand-mark">✚</div><div><b>CarePoint Patient Portal</b><div style="font-size:11px;color:#b9cedd">Your health, organized</div></div></div><button class="btn secondary" onclick="logout()">Log out</button></header>
+ <main class="portal-content">
+  <h1 style="font-size:24px;margin-bottom:3px">Hello, Aarav Sharma 👋</h1><p class="muted" style="margin-top:0">Patient ID: CP-P1001 · General patient access</p>
+  <div class="portal-grid" style="margin-top:18px">
+   <div class="portal-card"><div class="muted">Upcoming appointments</div><strong>2</strong><div class="muted" style="font-size:11px">Next visit: 19 Nov, 10:30 AM</div></div>
+   <div class="portal-card"><div class="muted">Patient status</div><strong style="font-size:18px;color:#15977f">OPD Active</strong><div class="muted" style="font-size:11px">Sample account status</div></div>
+   <div class="portal-card"><div class="muted">Outstanding bill</div><strong>₹0</strong><div class="muted" style="font-size:11px">No demo payment due</div></div>
+   <div class="portal-card"><h3>Personal profile</h3><p><b>Name:</b> Aarav Sharma</p><p><b>Age:</b> 34 years</p><p><b>Blood group:</b> O+ (sample)</p><p><b>Department:</b> Cardiology</p></div>
+   <div class="portal-card"><h3>Hospital help desk</h3><p><b>Emergency:</b> 112 (India)</p><p><b>Reception:</b> +91 00000 00000 (demo)</p><p><b>Email:</b> help@example-hospital.test</p><p class="muted" style="font-size:11px">For emergencies, contact local emergency services directly.</p></div>
+   <div class="portal-card"><h3>Patient services</h3><p>• Appointment requests</p><p>• Visit schedule</p><p>• Billing overview</p><p>• Hospital contact details</p></div>
+   <div class="portal-card portal-wide"><h3>My appointment schedule</h3><table class="portal-table"><thead><tr><th>Date</th><th>Time</th><th>Doctor</th><th>Department</th><th>Status</th></tr></thead><tbody><tr><td>19 Nov 2026</td><td>10:30 AM</td><td>Dr. Meera Shah</td><td>Cardiology</td><td><span class="pill">Confirmed</span></td></tr><tr><td>26 Nov 2026</td><td>11:00 AM</td><td>Dr. Meera Shah</td><td>Cardiology</td><td><span class="pill warn">Requested</span></td></tr></tbody></table></div>
+   <div class="portal-card portal-wide"><h3>Request an appointment</h3><form id="patientAppointmentForm" class="form-grid"><div class="field"><label>Department</label><select id="patientDepartment"><option>Cardiology</option><option>General Medicine</option><option>Orthopedics</option><option>Pediatrics</option><option>Dermatology</option></select></div><div class="field"><label>Preferred date</label><input id="patientDate" type="date" required></div><div class="field"><label>Preferred time</label><select id="patientTime"><option>09:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>02:00 PM</option><option>04:00 PM</option></select></div><div class="field"><label>Reason (non-emergency only)</label><input id="patientReason" placeholder="e.g. Routine consultation" required></div><div class="field full"><button class="btn" type="submit">Submit appointment request</button><span id="patientRequestMessage" class="muted" style="margin-left:10px;font-size:12px"></span></div></form></div>
+  </div>
+ </main>
+</div>
+
+<div class="app" id="adminApp" style="display:none">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">✚</div><span>CarePoint</span></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span><span class="navtext">Dashboard</span></button>
+    <button data-page="patients"><span class="ico">♙</span><span class="navtext">Patients</span></button>
+    <button data-page="appointments"><span class="ico">▣</span><span class="navtext">Appointments</span></button>
+    <button data-page="staff"><span class="ico">⚕</span><span class="navtext">Doctors & Staff</span></button>
+    <button data-page="equipment"><span class="ico">⚙</span><span class="navtext">Equipment</span></button>
+    <button data-page="wards"><span class="ico">▤</span><span class="navtext">Wards & Beds</span></button>
+    <button data-page="pharmacy"><span class="ico">✚</span><span class="navtext">Pharmacy Stock</span></button>
+    <button data-page="billing"><span class="ico">₹</span><span class="navtext">Billing</span></button>
+    <button data-page="reports"><span class="ico">▥</span><span class="navtext">Reports</span></button>
+  </nav>
+  <div class="nav-label">SYSTEM</div>
+  <nav class="nav"><button data-page="settings"><span class="ico">⚙</span><span class="navtext">Hospital Profile</span></button></nav>
+  <div class="sidebar-foot">CarePoint HMS<br>Demo workspace · v1.0<br><br>Sample records only</div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div class="eyebrow">Hospital administration</div><h1 id="pageTitle">Dashboard overview</h1></div><div class="top-right"><span class="date" id="today"></span><div class="avatar">AD</div><button class="btn secondary" style="padding:8px 10px" onclick="logout()">Log out</button></div></header>
+
+<section class="page active" id="dashboard">
+ <div class="grid stats">
+  <div class="card stat"><div><div class="label">Total Patients</div><strong id="statPatients">248</strong><small>↑ 12 this month</small></div><div class="stat-icon">♙</div></div>
+  <div class="card stat"><div><div class="label">Appointments Today</div><strong id="statAppointments">32</strong><small>8 pending check-in</small></div><div class="stat-icon">▣</div></div>
+  <div class="card stat"><div><div class="label">Available Beds</div><strong id="statBeds">46</strong><small>of 120 total beds</small></div><div class="stat-icon">▤</div></div>
+  <div class="card stat"><div><div class="label">Staff On Duty</div><strong id="statStaff">38</strong><small>Across all departments</small></div><div class="stat-icon">⚕</div></div>
+ </div>
+ <div class="grid dashboard-grid">
+  <div class="card"><div class="section-head"><h2>Patient visits overview</h2><span class="muted">Last 7 days · sample</span></div><div class="chart"><div class="bar-wrap"><div class="bar" style="height:46%"></div>Mon</div><div class="bar-wrap"><div class="bar" style="height:65%"></div>Tue</div><div class="bar-wrap"><div class="bar" style="height:52%"></div>Wed</div><div class="bar-wrap"><div class="bar" style="height:82%"></div>Thu</div><div class="bar-wrap"><div class="bar" style="height:72%"></div>Fri</div><div class="bar-wrap"><div class="bar" style="height:94%"></div>Sat</div><div class="bar-wrap"><div class="bar" style="height:58%"></div>Sun</div></div></div>
+  <div class="card"><div class="section-head"><h2>Hospital activity</h2><span class="muted">Recent</span></div><div class="activity"><span class="dot"></span><div><b>New patient registered</b><p>OPD registration · 09:42 AM</p></div></div><div class="activity"><span class="dot" style="background:#e8a23b"></span><div><b>Equipment maintenance due</b><p>Ventilator · ICU · Today</p></div></div><div class="activity"><span class="dot" style="background:#4d91d0"></span><div><b>Appointment scheduled</b><p>Cardiology · 11:30 AM</p></div></div><div class="activity"><span class="dot" style="background:#9b82d5"></span><div><b>Pharmacy stock updated</b><p>Inventory · Yesterday</p></div></div></div>
+ </div>
+ <div class="card" style="margin-top:16px"><div class="section-head"><h2>Today's schedule</h2><button class="btn secondary" onclick="showPage('appointments')">View appointments →</button></div><div id="todaySchedule"></div></div>
+</section>
+
+<section class="page" id="patients"><div class="section-head"><h2>Patient directory</h2><button class="btn" onclick="openModal('patient')">+ Add patient</button></div><div class="toolbar"><input class="search" placeholder="Search patient, ID or department..." oninput="renderTable('patients',this.value)"></div><div class="table-wrap" id="patientsTable"></div></section>
+<section class="page" id="appointments"><div class="section-head"><h2>Appointment calendar</h2><button class="btn" onclick="openModal('appointment')">+ New appointment</button></div><div class="toolbar"><input class="search" placeholder="Search appointments..." oninput="renderTable('appointments',this.value)"></div><div class="table-wrap" id="appointmentsTable"></div></section>
+<section class="page" id="staff"><div class="section-head"><h2>Doctors & staff directory</h2><button class="btn" onclick="openModal('staff')">+ Add staff</button></div><div class="toolbar"><input class="search" placeholder="Search name, role or department..." oninput="renderTable('staff',this.value)"></div><div class="table-wrap" id="staffTable"></div></section>
+<section class="page" id="equipment"><div class="section-head"><h2>Medical equipment inventory</h2><button class="btn" onclick="openModal('equipment')">+ Add equipment</button></div><div class="grid equipment-grid" id="equipmentGrid"></div></section>
+<section class="page" id="wards"><div class="section-head"><h2>Wards & bed management</h2><span class="muted">Sample capacity: 120 beds</span></div><div class="grid stats"><div class="card stat"><div><div class="label">General ward</div><strong>28 / 40</strong><small>12 available</small></div><div class="stat-icon">▤</div></div><div class="card stat"><div><div class="label">ICU</div><strong>14 / 20</strong><small>6 available</small></div><div class="stat-icon">♡</div></div><div class="card stat"><div><div class="label">Private rooms</div><strong>18 / 30</strong><small>12 available</small></div><div class="stat-icon">⌂</div></div><div class="card stat"><div><div class="label">Emergency</div><strong>14 / 30</strong><small>16 available</small></div><div class="stat-icon">✚</div></div></div><div class="card"><h2 style="font-size:15px">Bed availability by ward</h2><div id="wardBars"></div></div></section>
+<section class="page" id="pharmacy"><div class="section-head"><h2>Pharmacy stock</h2><button class="btn" onclick="openModal('medicine')">+ Add medicine</button></div><div class="table-wrap" id="pharmacyTable"></div></section>
+<section class="page" id="billing"><div class="section-head"><h2>Billing & payments</h2><button class="btn" onclick="openModal('bill')">+ Create bill</button></div><div class="grid stats"><div class="card stat"><div><div class="label">Today's collection</div><strong>₹42,850</strong><small>Sample figure</small></div><div class="stat-icon">₹</div></div><div class="card stat"><div><div class="label">Pending payments</div><strong>₹18,200</strong><small>Sample figure</small></div><div class="stat-icon">◷</div></div></div><div class="table-wrap" id="billingTable"></div></section>
+<section class="page" id="reports"><div class="section-head"><h2>Reports & analytics</h2><button class="btn secondary" onclick="window.print()">Print report</button></div><div class="grid stats"><div class="card"><div class="label">OPD visits this month</div><strong>1,284</strong><p class="muted">Illustrative data</p></div><div class="card"><div class="label">Average bed occupancy</div><strong>63%</strong><p class="muted">Illustrative data</p></div><div class="card"><div class="label">Equipment operational</div><strong>94%</strong><p class="muted">Illustrative data</p></div><div class="card"><div class="label">Patient satisfaction</div><strong>4.7/5</strong><p class="muted">Illustrative data</p></div></div><div class="card"><h2 style="font-size:15px">Included modules</h2><p class="muted">Patient registration, appointments, staff directory, equipment tracking, ward capacity, pharmacy stock, billing and hospital profile.</p></div></section>
+<section class="page" id="settings"><div class="section-head"><h2>Hospital profile</h2><button class="btn" onclick="saveProfile()">Save changes</button></div><div class="card"><div class="form-grid"><div class="field"><label>Hospital name</label><input id="hospitalName" value="CarePoint Multi-Speciality Hospital"></div><div class="field"><label>Registration / license reference</label><input value="DEMO-HMS-001"></div><div class="field"><label>Contact number</label><input value="+91 00000 00000"></div><div class="field"><label>Email</label><input value="info@example-hospital.test"></div><div class="field full"><label>Address</label><textarea rows="2">Sector 18, New Delhi, India</textarea></div><div class="field"><label>Departments</label><input value="Emergency, Cardiology, Orthopedics, Pediatrics, ICU"></div><div class="field"><label>Working hours</label><input value="24 x 7 Emergency | OPD 9 AM - 6 PM"></div></div></div></section>
+<div class="footer">CarePoint HMS · Educational mini project · Sample data only</div>
+</main></div>
+
+<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Add record</h2><button class="close" onclick="closeModal()">✕</button></div><form id="recordForm"><div class="form-grid" id="formFields"></div><div class="modal-actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" type="submit">Save record</button></div></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const seed={
+patients:[
+{id:'PT-1001',name:'Aarav Sharma',age:34,gender:'Male',department:'Cardiology',phone:'Sample only',status:'Admitted'},
+{id:'PT-1002',name:'Diya Verma',age:27,gender:'Female',department:'Pediatrics',phone:'Sample only',status:'OPD'},
+{id:'PT-1003',name:'Kabir Singh',age:52,gender:'Male',department:'Orthopedics',phone:'Sample only',status:'Discharged'},
+{id:'PT-1004',name:'Anaya Gupta',age:41,gender:'Female',department:'Neurology',phone:'Sample only',status:'Admitted'}],
+appointments:[
+{id:'AP-501',patient:'Aarav Sharma',doctor:'Dr. Meera Shah',department:'Cardiology',date:'2026-11-19',time:'10:30 AM',status:'Confirmed'},
+{id:'AP-502',patient:'Diya Verma',doctor:'Dr. Rohan Das',department:'Pediatrics',date:'2026-11-19',time:'11:30 AM',status:'Waiting'},
+{id:'AP-503',patient:'Kabir Singh',doctor:'Dr. Neel Kapoor',department:'Orthopedics',date:'2026-11-20',time:'09:45 AM',status:'Confirmed'}],
+staff:[
+{id:'ST-01',name:'Dr. Meera Shah',role:'Senior Cardiologist',department:'Cardiology',shift:'Morning',status:'On duty'},
+{id:'ST-02',name:'Dr. Rohan Das',role:'Pediatrician',department:'Pediatrics',shift:'Morning',status:'On duty'},
+{id:'ST-03',name:'Nisha Patel',role:'Head Nurse',department:'ICU',shift:'Night',status:'Off duty'},
+{id:'ST-04',name:'Arjun Rao',role:'Lab Technician',department:'Diagnostics',shift:'Day',status:'On duty'}],
+equipment:[
+{name:'Patient Monitor',code:'EQ-001',department:'ICU',quantity:18,condition:'Operational',icon:'📟'},
+{name:'Ventilator',code:'EQ-002',department:'ICU',quantity:8,condition:'Maintenance due',icon:'🫁'},
+{name:'MRI Scanner',code:'EQ-003',department:'Radiology',quantity:1,condition:'Operational',icon:'🧲'},
+{name:'Defibrillator',code:'EQ-004',department:'Emergency',quantity:6,condition:'Operational',icon:'⚡'},
+{name:'Ultrasound',code:'EQ-005',department:'Radiology',quantity:4,condition:'Operational',icon:'🩺'},
+{name:'Infusion Pump',code:'EQ-006',department:'General Ward',quantity:22,condition:'Operational',icon:'💧'}],
+medicines:[
+{name:'Paracetamol (sample)',category:'General',stock:240,reorder:50,expiry:'2027-06'},
+{name:'ORS Sachets (sample)',category:'General',stock:18,reorder:30,expiry:'2027-03'},
+{name:'Antiseptic Solution (sample)',category:'First aid',stock:76,reorder:20,expiry:'2027-08'}],
+bills:[
+{id:'BL-201',patient:'Aarav Sharma',service:'Consultation + tests',amount:2450,payment:'Paid',date:'2026-11-19'},
+{id:'BL-202',patient:'Diya Verma',service:'OPD consultation',amount:800,payment:'Pending',date:'2026-11-19'},
+{id:'BL-203',patient:'Kabir Singh',service:'X-ray + consultation',amount:1600,payment:'Paid',date:'2026-11-18'}]
+};
+let db={};Object.keys(seed).forEach(k=>{try{db[k]=JSON.parse(localStorage.getItem('carepoint_'+k))||seed[k]}catch(e){db[k]=seed[k]}});
+const titles={dashboard:'Dashboard overview',patients:'Patient management',appointments:'Appointments',staff:'Doctors & staff',equipment:'Equipment inventory',wards:'Wards & beds',pharmacy:'Pharmacy stock',billing:'Billing & payments',reports:'Reports & analytics',settings:'Hospital profile'};
+function save(k){localStorage.setItem('carepoint_'+k,JSON.stringify(db[k]))}
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));document.getElementById('pageTitle').textContent=titles[p];}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function badge(s){let c=/pending|waiting|maintenance|low/i.test(s)?'warn':/admitted|off duty|overdue/i.test(s)?'red':'';return `<span class="pill ${c}">${s}</span>`}
+function table(headers,rows){return `<table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows||'<tr><td colspan="8" class="empty">No records found</td></tr>'}</tbody></table>`}
+function renderTable(type,q=''){let data=db[type],keys=Object.keys(data[0]||{});let rows=data.filter(x=>JSON.stringify(x).toLowerCase().includes(q.toLowerCase())).map(x=>`<tr>${keys.map(k=>`<td>${k==='status'||k==='payment'?badge(x[k]):(x[k]??'')}</td>`).join('')}<td><button class="btn danger" style="padding:5px 8px" onclick="removeRecord('${type}','${x.id||x.code||x.name}')">Delete</button></td></tr>`).join('');let headers=keys.map(k=>k.replace(/([A-Z])/g,' $1')).concat('Action');document.getElementById(({medicines:'pharmacy',bills:'billing'}[type]||type)+'Table').innerHTML=table(headers,rows)}
+function removeRecord(type,id){if(!confirm('Delete this demo record?'))return;db[type]=db[type].filter(x=>(x.id||x.code||x.name)!==id);save(type);refresh()}
+function refresh(){['patients','appointments','staff','medicines','bills'].forEach(t=>renderTable(t));document.getElementById('equipmentGrid').innerHTML=db.equipment.map(e=>`<div class="card equipment"><div class="equipment-icon">${e.icon||'⚙'}</div><div><h3>${e.name}</h3><p>${e.code} · ${e.department}</p><p>${e.quantity} units · ${badge(e.condition)}</p><button class="btn danger" style="padding:5px 8px;margin-top:7px" onclick="removeRecord('equipment','${e.code}')">Remove</button></div></div>`).join('');document.getElementById('todaySchedule').innerHTML=table(['Time','Patient','Doctor','Department','Status'],db.appointments.slice(0,3).map(a=>`<tr><td>${a.time}</td><td>${a.patient}</td><td>${a.doctor}</td><td>${a.department}</td><td>${badge(a.status)}</td></tr>`).join(''));document.getElementById('wardBars').innerHTML=[['General ward',28,40],['ICU',14,20],['Private rooms',18,30],['Emergency',14,30]].map(w=>`<div style="margin:16px 0"><div style="display:flex;justify-content:space-between;font-size:12px"><b>${w[0]}</b><span>${w[1]} occupied / ${w[2]} beds</span></div><div style="height:8px;background:#edf2f6;border-radius:10px;margin-top:7px"><div style="height:8px;width:${w[1]/w[2]*100}%;background:#18a999;border-radius:10px"></div></div></div>`).join('');document.getElementById('statPatients').textContent=248+db.patients.length-4;document.getElementById('statAppointments').textContent=32+db.appointments.length-3;document.getElementById('statStaff').textContent=38+db.staff.length-4}
+const fields={
+patient:[['name','Patient name'],['age','Age','number'],['gender','Gender','select','Male,Female,Other'],['department','Department','select','Cardiology,Pediatrics,Orthopedics,Neurology,Emergency'],['phone','Contact (demo only)'],['status','Status','select','OPD,Admitted,Discharged']],
+appointment:[['patient','Patient name'],['doctor','Doctor name'],['department','Department','select','Cardiology,Pediatrics,Orthopedics,Neurology,Emergency'],['date','Date','date'],['time','Time'],['status','Status','select','Confirmed,Waiting,Cancelled']],
+staff:[['name','Staff name'],['role','Role / designation'],['department','Department'],['shift','Shift','select','Morning,Day,Night'],['status','Status','select','On duty,Off duty']],
+equipment:[['name','Equipment name'],['code','Equipment ID'],['department','Department'],['quantity','Quantity','number'],['condition','Condition','select','Operational,Maintenance due,Out of service']],
+medicine:[['name','Medicine / item name'],['category','Category'],['stock','Current stock','number'],['reorder','Reorder level','number'],['expiry','Expiry month']],
+bill:[['patient','Patient name'],['service','Service description'],['amount','Amount (₹)','number'],['payment','Payment status','select','Paid,Pending'],['date','Date','date']]
+};let current='';
+function openModal(type){current=type;document.getElementById('modalTitle').textContent={patient:'Add patient',appointment:'New appointment',staff:'Add staff member',equipment:'Add equipment',medicine:'Add pharmacy item',bill:'Create bill'}[type];document.getElementById('formFields').innerHTML=fields[type].map(f=>`<div class="field"><label>${f[1]}</label>${f[2]==='select'?`<select name="${f[0]}">${f[3].split(',').map(v=>`<option>${v}</option>`).join('')}</select>`:`<input name="${f[0]}" type="${f[2]||'text'}" ${f[2]==='number'?'min="0"':''} required>`}</div>`).join('');document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('recordForm').addEventListener('submit',e=>{e.preventDefault();let obj=Object.fromEntries(new FormData(e.target));if(current==='patient')obj.id='PT-'+Date.now().toString().slice(-6);if(current==='appointment')obj.id='AP-'+Date.now().toString().slice(-5);if(current==='staff')obj.id='ST-'+Date.now().toString().slice(-4);if(current==='equipment'){obj.icon='⚙';obj.quantity=Number(obj.quantity); }if(current==='medicine'){obj.stock=Number(obj.stock);obj.reorder=Number(obj.reorder)}if(current==='bill'){obj.id='BL-'+Date.now().toString().slice(-5);obj.amount=Number(obj.amount)}let target={patient:'patients',appointment:'appointments',staff:'staff',equipment:'equipment',medicine:'medicines',bill:'bills'}[current];db[target].unshift(obj);save(target);closeModal();e.target.reset();refresh()});
+function saveProfile(){let name=document.getElementById('hospitalName').value;alert('Hospital profile saved for this demo: '+name)}
+document.getElementById('today').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+refresh();
+
+// Supabase authentication. Set the project URL and anon/publishable key in config.js.
+let loginRole='admin';
+let supabaseClient=null;
+function showAuthError(message){const el=document.getElementById('loginError');el.textContent=message;el.style.display='block';}
+function clearAuthMessage(){document.getElementById('loginError').style.display='none';document.getElementById('authStatus').textContent='';}
+function setLoginRole(role){loginRole=role;document.getElementById('adminTab').classList.toggle('selected',role==='admin');document.getElementById('patientTab').classList.toggle('selected',role==='patient');document.getElementById('signupButton').style.display=role==='patient'?'block':'none';document.getElementById('userLabel')?.replaceChildren();clearAuthMessage();}
+function showSignedInApp(role,user){
+ document.getElementById('authScreen').style.display='none';
+ if(role==='admin'){
+  document.getElementById('patientPortal').style.display='none';
+  document.getElementById('adminApp').style.display='flex';
+  document.querySelector('.avatar').textContent=(user.email||'AD').slice(0,2).toUpperCase();
+ }else{
+  document.getElementById('adminApp').style.display='none';
+  document.getElementById('patientPortal').style.display='block';
+  const heading=document.querySelector('#patientPortal h1');
+  if(heading) heading.textContent='Welcome, '+(user.user_metadata?.full_name||user.email||'Patient');
+ }
+}
+async function getUserRole(user){
+ const {data,error}=await supabaseClient.from('profiles').select('role').eq('id',user.id).single();
+ if(error) throw new Error('Profile/role not found. Ask the hospital administrator to finish account setup.');
+ return data.role;
+}
+document.getElementById('loginForm').addEventListener('submit',async function(e){
+ e.preventDefault();clearAuthMessage();
+ if(!supabaseClient){showAuthError('Supabase setup missing. Add your project URL and anon key to config.js.');return;}
+ const email=document.getElementById('loginUser').value.trim();
+ const password=document.getElementById('loginPassword').value;
+ const button=document.getElementById('loginButton');button.disabled=true;button.textContent='Signing in…';
+ try{
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error) throw error;
+  const role=await getUserRole(data.user);
+  if(role!==loginRole){await supabaseClient.auth.signOut();throw new Error('This account is not registered for the selected login.');}
+  showSignedInApp(role,data.user);
+ }catch(err){showAuthError(err.message||'Sign-in failed. Please check your details.');}
+ finally{button.disabled=false;button.textContent='Sign in';}
+});
+document.getElementById('signupButton').addEventListener('click',async()=>{
+ clearAuthMessage();if(!supabaseClient){showAuthError('Supabase setup missing. Configure config.js first.');return;}
+ const email=document.getElementById('loginUser').value.trim();const password=document.getElementById('loginPassword').value;
+ if(!email||password.length<8){showAuthError('Enter a valid email and a password with at least 8 characters.');return;}
+ try{const {error}=await supabaseClient.auth.signUp({email,password,options:{emailRedirectTo:location.origin}});if(error)throw error;document.getElementById('authStatus').textContent='Registration submitted. Check your email to confirm the account, then sign in.';}
+ catch(err){showAuthError(err.message||'Registration failed.');}
+});
+document.getElementById('resetButton').addEventListener('click',async()=>{
+ clearAuthMessage();if(!supabaseClient){showAuthError('Supabase setup missing. Configure config.js first.');return;}
+ const email=document.getElementById('loginUser').value.trim();if(!email){showAuthError('Enter your email address first.');return;}
+ const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.origin});
+ if(error)showAuthError(error.message);else document.getElementById('authStatus').textContent='If this email is registered, a password reset link will be sent.';
+});
+async function logout(){if(supabaseClient) await supabaseClient.auth.signOut();document.getElementById('adminApp').style.display='none';document.getElementById('patientPortal').style.display='none';document.getElementById('authScreen').style.display='grid';document.getElementById('loginPassword').value='';document.getElementById('loginUser').value='';setLoginRole('admin');}
+(async function initSupabaseAuth(){
+ try{
+  const cfg=window.CAREPOINT_SUPABASE_CONFIG;
+  if(!cfg||!cfg.url||!cfg.anonKey||cfg.url.includes('YOUR-PROJECT')) return;
+  supabaseClient=window.supabase.createClient(cfg.url,cfg.anonKey);
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(session?.user){try{const role=await getUserRole(session.user);showSignedInApp(role,session.user);}catch(e){showAuthError(e.message);}}
+  supabaseClient.auth.onAuthStateChange(async(_event,session)=>{
+   if(!session){document.getElementById('adminApp').style.display='none';document.getElementById('patientPortal').style.display='none';document.getElementById('authScreen').style.display='grid';}
+  });
+ }catch(err){showAuthError('Could not initialize authentication: '+err.message);}
+})();
+document.getElementById('patientAppointmentForm').addEventListener('submit',function(e){e.preventDefault();const d=document.getElementById('patientDate').value;if(!d){return;}document.getElementById('patientRequestMessage').textContent='Demo request recorded in this page only. It has not been sent to a hospital.';this.reset();});
+
+
+</script>
+</body></html>
